@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
@@ -8,8 +9,30 @@
     <bean id="UserService" class="com.spring.demo.Demo01.Impl.UserServiceImpl">
         <property name="name" value="小红"/>
     </bean>
-    <!--Bean的生命周期配置-->
-    <bean id="customerDao" class="com.spring.demo.Demo02.CustomerDaoImpl" init-method="setup" destroy-method="destroy">
 
+
+    <!--==========================Bean的生命周期配置=========================-->
+    <!--<bean id="customerDao" class="com.spring.demo.Demo02.CustomerDaoImpl" init-method="setup" destroy-method="destroy">
+    </bean>-->
+
+    <!--====================spring属性注入============================-->
+    <!--1.构造方法的方式-->
+    <bean id="car" class="com.spring.demo.Demo03.Car">
+        <constructor-arg name="name" value="宝马"/>
+        <constructor-arg name="price" value="1260000"/>
     </bean>
+    <!--2.set方法的方式-->
+   <!-- <bean id="car01" class="com.spring.demo.Demo03.Car01">
+        <property name="name" value="奥迪"/>
+        <property name="price" value="186000.00"/>
+    </bean>-->
+    <!--P名称空间的方式注入属性 简化-->
+    <bean id="car01" class="com.spring.demo.Demo03.Car01" p:name="奥迪" p:price="186000.0"/>
+    <!--2.1 set方法注入对象属性-->
+    <!--<bean id="employee" class="com.spring.demo.Demo03.Employee">
+        <property name="name" value="王二"/>
+        <property name="car" ref="car01"/>
+    </bean>-->
+    <!--P名称空间的方式注入属性 简化-->
+    <bean id="employee" class="com.spring.demo.Demo03.Employee" p:name="二麻子" p:car-ref="car01"/>
 </beans>
