@@ -1,6 +1,6 @@
-package com.spring.demo.service.Impl;
+package com.spring.demo.Demo01.Impl;
 
-import com.spring.demo.service.UserService;
+import com.spring.demo.Demo01.service.UserService;
 
 /**
  * 模拟不同的实现

@@ -4,7 +4,12 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-        <!--spring入门配置-->
-    <bean id="UserService" class="com.spring.demo.service.Impl.UserServiceHibernateImpl"/>
+    <!--spring入门配置-->
+    <bean id="UserService" class="com.spring.demo.Demo01.Impl.UserServiceImpl">
+        <property name="name" value="小红"/>
+    </bean>
+    <!--Bean的生命周期配置-->
+    <bean id="customerDao" class="com.spring.demo.Demo02.CustomerDaoImpl" init-method="setup" destroy-method="destroy">
 
+    </bean>
 </beans>
