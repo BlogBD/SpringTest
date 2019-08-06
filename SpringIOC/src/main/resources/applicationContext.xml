@@ -5,6 +5,6 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
         <!--spring入门配置-->
-    <bean id="UserService" class="com.spring.demo.service.Impl.UserServiceImpl"/>
+    <bean id="UserService" class="com.spring.demo.service.Impl.UserServiceHibernateImpl"/>
 
 </beans>

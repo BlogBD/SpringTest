@@ -5,6 +5,6 @@ import com.spring.demo.service.UserService;
 public class UserServiceImpl implements UserService {
     @Override
     public void save() {
-        System.out.println("保存");
+        System.out.println("UserServiceImpl执行...");
     }
 }
