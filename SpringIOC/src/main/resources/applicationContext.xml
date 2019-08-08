@@ -59,4 +59,31 @@
         <property name="name" value="#{'小黑'}"/>
         <property name="car" value="#{car02}"/>
     </bean>
+
+
+    <!--Spring集合属性注入-->
+    <bean id="collectionBean" class="com.spring.demo.Demo4.CollectionBean">
+        <property name="arrs" >
+            <list>
+                <value>王东</value>
+                <value>小黑</value>
+                <value>小白</value>
+                <value>赵柏</value>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="王东" value="100"/>
+                <entry key="小黑" value="1002"/>
+                <entry key="王小白东" value="200"/>
+                <entry key="赵柏" value="110"/>
+            </map>
+        </property>
+        <property name="list">
+            <list>
+                <ref bean="person"/>
+            </list>
+        </property>
+    </bean>
+    <bean name="person" class="com.spring.demo.Demo4.Person" p:name="王" p:age="25"/>
 </beans>
