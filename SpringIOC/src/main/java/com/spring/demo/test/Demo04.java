@@ -1,6 +1,6 @@
 package com.spring.demo.test;
 
-import com.spring.demo.Demo4.CollectionBean;
+import com.spring.demo.Demo04.CollectionBean;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 /**

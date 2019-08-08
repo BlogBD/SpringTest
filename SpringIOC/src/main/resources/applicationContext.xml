@@ -1,89 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
-    <!--spring入门配置-->
-    <bean id="UserService" class="com.spring.demo.Demo01.Impl.UserServiceImpl">
-        <property name="name" value="小红"/>
-    </bean>
-
-
-    <!--==========================Bean的生命周期配置=========================-->
-    <!--<bean id="customerDao" class="com.spring.demo.Demo02.CustomerDaoImpl" init-method="setup" destroy-method="destroy">
-    </bean>-->
-
-    <!--====================spring属性注入============================-->
-    <!--1.构造方法的方式-->
-    <bean id="car" class="com.spring.demo.Demo03.Car">
-        <constructor-arg name="name" value="宝马"/>
-        <constructor-arg name="price" value="1260000"/>
-    </bean>
-
-    <!--2.set方法的方式-->
-   <!-- <bean id="car01" class="com.spring.demo.Demo03.Car01">
-        <property name="name" value="奥迪"/>
-        <property name="price" value="186000.00"/>
-    </bean>-->
-    <!--P名称空间的方式注入属性 简化-->
-   <!-- <bean id="car01" class="com.spring.demo.Demo03.Car01" p:name="奥迪" p:price="186000.0"/>-->
-    <!--SpEL注入属性-->
-    <bean id="car01" class="com.spring.demo.Demo03.Car01">
-        <property name="name" value="#{'宝马'}"/>
-        <property name="price" value="#{158888.00}"/>
-    </bean>
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    <!--配置annotation-->
+    <context:component-scan base-package="com.spring.demo.Demo05"/>
+    <bean name="home" class="com.spring.demo.Demo05.Home"/>
+     <!--spring入门配置-->
+     <bean id="UserService" class="com.spring.demo.Demo01.Impl.UserServiceImpl">
+         <property name="name" value="小红"/>
+     </bean>
 
 
-    <!--2.1 set方法注入对象属性-->
-    <!--<bean id="employee" class="com.spring.demo.Demo03.Employee">
-        <property name="name" value="王二"/>
-        <property name="car" ref="car01"/>
-    </bean>-->
-    <!--P名称空间的方式注入属性 简化-->
-    <!--<bean id="employee" class="com.spring.demo.Demo03.Employee" p:name="二麻子" p:car-ref="car01"/>-->
-    <!--SpEL注入属性-->
-   <!-- <bean id="employee" class="com.spring.demo.Demo03.Employee">
-        <property name="name" value="#{'小白'}"/>
-        <property name="car" ref="car01"/>
-    </bean>-->
-    <!--SpEL注入属性  通过方法赋值-->
-    <bean id="carInfo" class="com.spring.demo.Demo03.CarInfo" p:name="三轮车" />
-    <bean id="car02" class="com.spring.demo.Demo03.Car01">
-        <property name="name" value="#{carInfo.name}"/>
-        <property name="price" value="#{carInfo.calculatorPrice()}"/>
-    </bean>
 
-    <bean id="employee" class="com.spring.demo.Demo03.Employee">
-        <property name="name" value="#{'小黑'}"/>
-        <property name="car" value="#{car02}"/>
-    </bean>
+     <!--==========================Bean的生命周期配置=========================-->
+     <!--<bean id="customerDao" class="com.spring.demo.Demo02.CustomerDaoImpl" init-method="setup" destroy-method="destroy">
+     </bean>-->
+
+     <!--====================spring属性注入============================-->
+     <!--1.构造方法的方式-->
+     <bean id="car" class="com.spring.demo.Demo03.Car">
+         <constructor-arg name="name" value="宝马"/>
+         <constructor-arg name="price" value="1260000"/>
+     </bean>
+
+     <!--2.set方法的方式-->
+    <!-- <bean id="car01" class="com.spring.demo.Demo03.Car01">
+         <property name="name" value="奥迪"/>
+         <property name="price" value="186000.00"/>
+     </bean>-->
+     <!--P名称空间的方式注入属性 简化-->
+    <!-- <bean id="car01" class="com.spring.demo.Demo03.Car01" p:name="奥迪" p:price="186000.0"/>-->
+     <!--SpEL注入属性-->
+     <bean id="car01" class="com.spring.demo.Demo03.Car01">
+         <property name="name" value="#{'宝马'}"/>
+         <property name="price" value="#{158888.00}"/>
+     </bean>
 
 
-    <!--Spring集合属性注入-->
-    <bean id="collectionBean" class="com.spring.demo.Demo4.CollectionBean">
-        <property name="arrs" >
-            <list>
-                <value>王东</value>
-                <value>小黑</value>
-                <value>小白</value>
-                <value>赵柏</value>
-            </list>
-        </property>
-        <property name="map">
-            <map>
-                <entry key="王东" value="100"/>
-                <entry key="小黑" value="1002"/>
-                <entry key="王小白东" value="200"/>
-                <entry key="赵柏" value="110"/>
-            </map>
-        </property>
-        <property name="list">
-            <list>
-                <ref bean="person"/>
-            </list>
-        </property>
-    </bean>
-    <bean name="person" class="com.spring.demo.Demo4.Person" p:name="王" p:age="25"/>
+     <!--2.1 set方法注入对象属性-->
+     <!--<bean id="employee" class="com.spring.demo.Demo03.Employee">
+         <property name="name" value="王二"/>
+         <property name="car" ref="car01"/>
+     </bean>-->
+     <!--P名称空间的方式注入属性 简化-->
+     <!--<bean id="employee" class="com.spring.demo.Demo03.Employee" p:name="二麻子" p:car-ref="car01"/>-->
+     <!--SpEL注入属性-->
+    <!-- <bean id="employee" class="com.spring.demo.Demo03.Employee">
+         <property name="name" value="#{'小白'}"/>
+         <property name="car" ref="car01"/>
+     </bean>-->
+     <!--SpEL注入属性  通过方法赋值-->
+     <bean id="carInfo" class="com.spring.demo.Demo03.CarInfo" p:name="三轮车" />
+     <bean id="car02" class="com.spring.demo.Demo03.Car01">
+         <property name="name" value="#{carInfo.name}"/>
+         <property name="price" value="#{carInfo.calculatorPrice()}"/>
+     </bean>
+
+     <bean id="employee" class="com.spring.demo.Demo03.Employee">
+         <property name="name" value="#{'小黑'}"/>
+         <property name="car" value="#{car02}"/>
+     </bean>
+
+
+     <!--Spring集合属性注入-->
+     <bean id="collectionBean" class="com.spring.demo.Demo04.CollectionBean">
+         <property name="arrs" >
+             <list>
+                 <value>王东</value>
+                 <value>小黑</value>
+                 <value>小白</value>
+                 <value>赵柏</value>
+             </list>
+         </property>
+         <property name="map">
+             <map>
+                 <entry key="王东" value="100"/>
+                 <entry key="小黑" value="1002"/>
+                 <entry key="王小白东" value="200"/>
+                 <entry key="赵柏" value="110"/>
+             </map>
+         </property>
+         <property name="list">
+             <list>
+                 <ref bean="person"/>
+             </list>
+         </property>
+     </bean>
+     <bean name="person" class="com.spring.demo.Demo04.Person" p:name="王" p:age="25"/>
 </beans>
