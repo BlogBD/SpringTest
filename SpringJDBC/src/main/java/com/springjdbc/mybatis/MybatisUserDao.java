@@ -14,6 +14,7 @@ public interface MybatisUserDao {
      * 查询全部
      * @return
      */
+
     @Select(value = "select * from student")
     public List<Student>  getAll();
 }

@@ -3,6 +3,7 @@ package com.spring.demo.test;
 import com.spring.demo.Demo03.Car;
 import com.spring.demo.Demo03.Car01;
 import com.spring.demo.Demo03.Employee;
+import com.spring.demo.Demo03.Person;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -37,5 +38,15 @@ public class Demo03 {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
         Employee employee = (Employee) applicationContext.getBean("employee");
         System.out.println(employee.toString());
+    }
+
+    /**
+     * 测试lombok
+     */
+    @Test
+    public void test04(){
+        ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Person person01 = (Person) applicationContext.getBean("person01");
+        System.out.println(person01.toString());
     }
 }

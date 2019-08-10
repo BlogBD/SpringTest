@@ -91,4 +91,8 @@
          </property>
      </bean>
      <bean name="person" class="com.spring.demo.Demo04.Person" p:name="王" p:age="25"/>
+    <bean name="person01" class="com.spring.demo.Demo03.Person">
+        <property name="name" value="王二"/>
+        <property name="age" value="12"/>
+    </bean>
 </beans>
