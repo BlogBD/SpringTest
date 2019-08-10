@@ -1,11 +1,8 @@
 package com.springjdbc.demo;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-@Setter
-@Getter
-@ToString
+import lombok.Data;
+
+@Data
 public class Student {
   private String id;
   private String name;
