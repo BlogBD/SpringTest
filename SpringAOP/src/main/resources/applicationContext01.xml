@@ -8,23 +8,12 @@
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-    <aop:aspectj-autoproxy />
     <context:component-scan base-package="com.spring"/>
-    <!--<bean id="loggingAspect" class="com.spring.demo.LoggingAspect"/>
-    <bean id="calculator" class="com.spring.demo.Calculator"/>-->
-    <!--SpringAop产生代理对象-->
-    <bean id="studentDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-        <property name="target" ref="studentDaoImpl"/><!--目标类-->
-        <property name="proxyInterfaces" value="com.spring.SpringAop.StudentDao"/> <!--实现的接口-->
-        <property name="interceptorNames" value="myBeforeAdvice"/><!--拦截的名称-->
-        <property name="optimize" value="true"/><!--强制使用cglib-->
-    </bean>
-
     <bean id="myAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
-        <property name="pattern" value=".*"/><!--正则表达式-->
+        <property name="pattern" value=".*save.*"/><!--正则表达式-->
         <property name="advice" ref="myAroundAdvice"/>
     </bean>
-    <bean id="studentDaoProxy02" class="org.springframework.aop.framework.ProxyFactoryBean">
+    <bean id="studentDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
         <property name="target" ref="customerDao"/><!--目标类-->
         <property name="proxyTargetClass" value="true"/>
         <property name="interceptorNames" value="myAdvisor"/>
