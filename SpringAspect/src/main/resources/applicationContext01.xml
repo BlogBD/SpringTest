@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--===========XML的配置方式完成AOP开发==============-->
+    <!--1.0========配置目标类========-->
+    <bean id="customerDao" class="com.spring.aspectJ.demo02.CustomerDaoImpl"/>
+
+    <!--2.0=========配置切面类========-->
+    <bean id="myAspectXml" class="com.spring.aspectJ.demo02.MyAspectXml"/>
+
+    <!--3.0==========aop配置=========-->
+    <aop:config>
+        <!--3.1配置切入点-->
+        <aop:pointcut id="pointcut00" expression="execution(* com.spring.aspectJ.demo02.CustomerDao.*(..))"/>
+        <aop:pointcut id="pointcut01" expression="execution(* com.spring.aspectJ.demo02.CustomerDao.save(..))"/>
+        <aop:pointcut id="pointcut02" expression="execution(* com.spring.aspectJ.demo02.CustomerDao.findAll(..))"/>
+        <aop:pointcut id="pointcut03" expression="execution(* com.spring.aspectJ.demo02.CustomerDao.update(..))"/>
+        <aop:pointcut id="pointcut04" expression="execution(* com.spring.aspectJ.demo02.CustomerDao.delete(..))"/>
+        <aop:pointcut id="pointcut05" expression="execution(* com.spring.aspectJ.demo02.CustomerDao.findOne(..))"/>
+        <!--3.2配置切面-->
+        <aop:aspect ref="myAspectXml">
+            <!--方法分割线-->
+            <aop:after method="line" pointcut-ref="pointcut00"/>
+            <!--前置通知-->
+            <aop:before method="before" pointcut-ref="pointcut01"/>
+            <!--后置通知-->
+            <aop:after-returning method="afterReturning" pointcut-ref="pointcut02" returning="o"/>
+            <!--环绕通知-->
+            <aop:around method="around" pointcut-ref="pointcut03" />
+            <!--异常通知-->
+            <aop:after-throwing method="afterThrowing" pointcut-ref="pointcut04" throwing="e"/>
+            <!--最终通知-->
+            <aop:after method="after" pointcut-ref="pointcut05"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

@@ -22,7 +22,7 @@ public class MyAspectAnno {
      * 后置通知
      * @param result
      */
-    @AfterReturning(value = "execution(* com.spring.aspectJ.demo01.ProductDao.update(..))" ,returning = "result")
+    @AfterReturning(value = "myPointcut2()" ,returning = "result")
     public void afterReturning(Object result){
         System.out.println("》》》》》》》》》后置通知》》》》》》》》》》"+result+"\n");
     }
@@ -57,4 +57,7 @@ public class MyAspectAnno {
 
     @Pointcut(value = "execution(* com.spring.aspectJ.demo01.ProductDao.save(..))")
     public void myPointcut(){}
+
+    @Pointcut(value = "execution(* com.spring.aspectJ.demo01.ProductDao.update(..))")
+    public void myPointcut2(){}
 }
