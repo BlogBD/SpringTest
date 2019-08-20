@@ -6,10 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="SpringAOP" />
+        <module name="SpringMVC" />
         <module name="SpringIOC" />
         <module name="SpringAspect" />
         <module name="SpringJDBC" />
+        <module name="SpringAOP" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
