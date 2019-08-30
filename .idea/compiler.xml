@@ -12,6 +12,7 @@
         <module name="SpringMVCRESTful" />
         <module name="SpringJDBC" />
         <module name="SpringAOP" />
+        <module name="SpringInterceptor" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
