@@ -16,4 +16,9 @@ public class IndexController {
     public String index(){
         return "index";
     }
+
+    @RequestMapping("/add")
+    public String add(){
+        return "add";
+    }
 }
